@@ -1,0 +1,22 @@
+.products-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card{
+    background-color: #ffc340;
+    padding: 16px;
+    text-align: center;
+    display: grid;
+}
+
+.product-card button, .product-card input[type="number"]{
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
