@@ -1,0 +1,25 @@
+{% macro icon(name) -%}
+{% if name == "hoodie" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M35 18c3 6 9 9 15 9s12-3 15-9"/><path d="M35 18 18 28l6 12 6-4v40h40V36l6 4 6-12-17-10"/><circle cx="50" cy="46" r="3" fill="currentColor" stroke="none"/></svg>
+{% elif name == "tee" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M36 20 20 30l7 13 9-6v41h28V37l9 6 7-13-16-10"/><path d="M36 20c3 6 8 9 14 9s11-3 14-9"/></svg>
+{% elif name == "jacket" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M34 19 18 29l7 13 9-7v43h32V35l9 7 7-13-16-10"/><path d="M50 28v50"/><circle cx="46" cy="46" r="1.6" fill="currentColor" stroke="none"/><circle cx="46" cy="56" r="1.6" fill="currentColor" stroke="none"/><circle cx="46" cy="66" r="1.6" fill="currentColor" stroke="none"/></svg>
+{% elif name == "cap" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58c0-16 12-28 28-28s28 12 28 28"/><path d="M78 58c10 1 16 5 16 8s-9 5-16 5"/><path d="M22 58c-4 0-6 3-6 6s5 7 12 7h44"/><circle cx="50" cy="42" r="2" fill="currentColor" stroke="none"/></svg>
+{% elif name == "beanie" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 60c0-18 10-32 22-32s22 14 22 32"/><rect x="24" y="60" width="52" height="14" rx="3"/><path d="M50 28v-8"/><circle cx="50" cy="18" r="3"/></svg>
+{% elif name == "tote" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 38h44l4 44H24z"/><path d="M38 38v-8a12 12 0 0 1 24 0v8"/></svg>
+{% elif name == "socks" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M40 16h20v34l14 14c4 4 4 12-4 14H40c-6 0-10-4-10-10V16z"/><path d="M40 30h20"/></svg>
+{% elif name == "pin" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="42" r="22"/><path d="M50 64v20"/><circle cx="50" cy="42" r="7" fill="currentColor" stroke="none"/></svg>
+{% elif name == "print" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="14" width="60" height="72" rx="2"/><path d="M30 62l14-16 10 10 12-18 14 24"/><circle cx="34" cy="32" r="4"/></svg>
+{% elif name == "mug" %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 30h40v34a14 14 0 0 1-14 14H38a14 14 0 0 1-14-14V30z"/><path d="M64 38h6a10 10 0 0 1 0 20h-6"/><path d="M32 22c0-4 4-4 4-8M44 22c0-4 4-4 4-8"/></svg>
+{% else %}
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="22" width="56" height="56" rx="4"/><circle cx="50" cy="50" r="14"/></svg>
+{% endif %}
+{%- endmacro %}

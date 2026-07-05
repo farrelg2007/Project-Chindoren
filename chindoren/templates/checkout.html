@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Checkout — Chindoren{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top:40px;">
+  <div class="container">
+    <h1 style="font-size:34px; margin-bottom:36px;">Checkout</h1>
+
+    <form method="post">
+    <div class="cart-layout">
+      <div>
+        <div class="summary-box" style="position:static; margin-bottom:24px;">
+          <h3>Contact & shipping</h3>
+          <div class="form-grid">
+            <div class="field"><label>Full name</label><input type="text" name="name" required></div>
+            <div class="field"><label>Email</label><input type="email" name="email" required></div>
+            <div class="field full"><label>Address</label><input type="text" name="address" required></div>
+            <div class="field"><label>City</label><input type="text" name="city" required></div>
+            <div class="field"><label>Postcode</label><input type="text" name="postcode" required></div>
+            <div class="field full"><label>Phone number</label><input type="tel" name="phone" required></div>
+          </div>
+        </div>
+
+        <div class="summary-box" style="position:static;">
+          <h3>Payment method</h3>
+          <div class="pay-options">
+            <div class="pay-option">
+              <input type="radio" name="payment" id="pay-bank" value="Bank Transfer" checked>
+              <label for="pay-bank">Bank Transfer <span class="mono muted">VA</span></label>
+            </div>
+            <div class="pay-option">
+              <input type="radio" name="payment" id="pay-qris" value="QRIS">
+              <label for="pay-qris">QRIS <span class="mono muted">Scan to pay</span></label>
+            </div>
+            <div class="pay-option">
+              <input type="radio" name="payment" id="pay-cod" value="Cash on Delivery">
+              <label for="pay-cod">Cash on Delivery <span class="mono muted">COD</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>Order summary</h3>
+        {% for l in lines %}
+        <div class="summary-row"><span>{{ l.product.name }} × {{ l.qty }}</span><span class="val">{{ format_price(l.line_total) }}</span></div>
+        {% endfor %}
+        <div class="summary-row"><span>Subtotal</span><span class="val">{{ format_price(subtotal) }}</span></div>
+        <div class="summary-row"><span>Shipping</span><span class="val">{{ 'Free' if shipping == 0 else format_price(shipping) }}</span></div>
+        <div class="summary-row total"><span>Total</span><span class="val">{{ format_price(total) }}</span></div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:20px;">Place order</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

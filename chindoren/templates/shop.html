@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Shop — Chindoren{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top:48px;">
+  <div class="container">
+    <h1 style="font-size:38px; margin-bottom:8px;">Shop all</h1>
+    <p class="muted" style="margin-bottom:36px;">Every product, one signal.</p>
+
+    <div class="filter-bar">
+      <div class="pill-group">
+        <a href="{{ url_for('products_page', sort=sort, q=q) }}" class="pill {{ 'active' if cat == 'All' }}">All</a>
+        {% for c in all_categories %}
+        <a href="{{ url_for('products_page', cat=c, sort=sort, q=q) }}" class="pill {{ 'active' if cat == c }}">{{ c }}</a>
+        {% endfor %}
+      </div>
+      <form method="get" style="display:flex; align-items:center; gap:14px;">
+        <input type="hidden" name="cat" value="{{ cat }}">
+        <input type="hidden" name="q" value="{{ q }}">
+        <span class="result-count">{{ total }} item{{ 's' if total != 1 }}</span>
+        <select class="sort-select" name="sort" onchange="this.form.submit()">
+          <option value="featured" {{ 'selected' if sort=='featured' }}>Featured</option>
+          <option value="newest" {{ 'selected' if sort=='newest' }}>Newest</option>
+          <option value="price_asc" {{ 'selected' if sort=='price_asc' }}>Price ↑</option>
+          <option value="price_desc" {{ 'selected' if sort=='price_desc' }}>Price ↓</option>
+        </select>
+      </form>
+    </div>
+
+    {% if products %}
+    <div class="grid">
+      {% for p in products %}
+      <a class="card" href="{{ url_for('product_detail', product_id=p.id) }}">
+        <div class="card-media">
+          {{ icon(p.icon) }}
+          <div class="card-badges">
+            {% if 'new' in p.tags %}<span class="badge badge-new">New</span>{% endif %}
+            {% if 'bestseller' in p.tags %}<span class="badge badge-bestseller">Bestseller</span>{% endif %}
+            {% if 'limited' in p.tags %}<span class="badge badge-limited">Limited</span>{% endif %}
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-cat">{{ p.category }}</span>
+          <span class="card-name">{{ p.name }}</span>
+          <div class="card-foot">
+            <span class="card-price mono">
+              {% if p.compare_at %}<span class="strike">{{ format_price(p.compare_at) }}</span>{% endif %}
+              {{ format_price(p.price) }}
+            </span>
+            <span class="card-sku">{{ p.sku }}</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <h3>No signal</h3>
+      <p>Nothing matches "{{ q }}" right now. Try another search or browse all products.</p>
+      <a href="{{ url_for('products_page') }}" class="btn btn-primary">Clear filters</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

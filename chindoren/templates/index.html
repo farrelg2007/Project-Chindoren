@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Chindoren — Stay Fluid{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero-media">
+    <img src="{{ url_for('static', filename='img/hero-banner.jpeg') }}" alt="Chindoren, stay fluid">
+  </div>
+  <div class="container hero-content">
+    <h1 class="hero-title">STAY <span class="accent-word">FLUID</span>.<br>WEAR YOUR SIGNAL.</h1>
+    <p class="hero-sub">Streetwear cut for movement — built in small batches around the idea of static, signal, and everything transmitted in between.</p>
+    <div class="hero-actions">
+      <a href="{{ url_for('products_page') }}" class="btn btn-primary btn-lg">Shop Now</a>
+         </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Browse by category</h2>
+        <p class="lede">Four categories, one frequency. Everything is designed together so it's built to be worn together.</p>
+      </div>
+    </div>
+    <div class="cat-strip">
+      {% for c in cats %}
+      <a class="cat-card" href="{{ url_for('products_page') }}?cat={{ c }}">
+        <div class="num">0{{ loop.index }}</div>
+        <h3>{{ c }}</h3>
+        <p>Shop {{ c.lower() }} →</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Bestsellers</h2>
+        <p class="lede">The pieces that keep coming back into rotation.</p>
+      </div>
+      <a href="{{ url_for('products_page') }}" class="section-link">View all products →</a>
+    </div>
+    <div class="grid">
+      {% for p in featured %}
+      <a class="card" href="{{ url_for('product_detail', product_id=p.id) }}">
+        <div class="card-media">
+          {{ icon(p.icon) }}
+          <div class="card-badges">
+            {% if 'new' in p.tags %}<span class="badge badge-new">New</span>{% endif %}
+            {% if 'bestseller' in p.tags %}<span class="badge badge-bestseller">Bestseller</span>{% endif %}
+            {% if 'limited' in p.tags %}<span class="badge badge-limited">Limited</span>{% endif %}
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-cat">{{ p.category }}</span>
+          <span class="card-name">{{ p.name }}</span>
+          <div class="card-foot">
+            <span class="card-price mono">
+              {% if p.compare_at %}<span class="strike">{{ format_price(p.compare_at) }}</span>{% endif %}
+              {{ format_price(p.price) }}
+            </span>
+            <span class="card-sku">{{ p.sku }}</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Newest transmissions</h2>
+        <p class="lede">Fresh off the latest drop.</p>
+      </div>
+      <a href="{{ url_for('products_page') }}?sort=newest" class="section-link">View all new →</a>
+    </div>
+    <div class="grid">
+      {% for p in newest %}
+      <a class="card" href="{{ url_for('product_detail', product_id=p.id) }}">
+        <div class="card-media">
+          {{ icon(p.icon) }}
+          <div class="card-badges">
+            {% if 'new' in p.tags %}<span class="badge badge-new">New</span>{% endif %}
+            {% if 'bestseller' in p.tags %}<span class="badge badge-bestseller">Bestseller</span>{% endif %}
+            {% if 'limited' in p.tags %}<span class="badge badge-limited">Limited</span>{% endif %}
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-cat">{{ p.category }}</span>
+          <span class="card-name">{{ p.name }}</span>
+          <div class="card-foot">
+            <span class="card-price mono">
+              {% if p.compare_at %}<span class="strike">{{ format_price(p.compare_at) }}</span>{% endif %}
+              {{ format_price(p.price) }}
+            </span>
+            <span class="card-sku">{{ p.sku }}</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

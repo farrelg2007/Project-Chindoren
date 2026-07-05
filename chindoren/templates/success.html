@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmed — Chindoren{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="success-wrap">
+      <div class="success-icon">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1 style="font-size:32px;">Signal Received, {{ order.name.split(' ')[0] if order.name else 'there' }}.</h1>
+      <p class="muted" style="margin-top:12px;">Your order is confirmed and headed for transmission. A copy of this receipt has been sent to {{ order.email }}.</p>
+
+      <div class="order-box">
+        <div class="label">Order ID</div>
+        <div class="id">{{ order.id }}</div>
+      </div>
+
+      <div class="order-summary">
+        {% for l in order.lines %}
+        <div class="row"><span>{{ l.name }} ({{ l.color }} / {{ l.size }}) × {{ l.qty }}</span><span class="mono">{{ format_price(l.line_total) }}</span></div>
+        {% endfor %}
+        <div class="row"><span>Shipping</span><span class="mono">{{ 'Free' if order.shipping == 0 else format_price(order.shipping) }}</span></div>
+        <div class="row" style="font-weight:700;"><span>Total</span><span class="mono">{{ format_price(order.total) }}</span></div>
+        <div class="row"><span>Payment method</span><span>{{ order.payment }}</span></div>
+        <div class="row"><span>Shipping to</span><span style="text-align:right; max-width:280px;">{{ order.address }}, {{ order.city }} {{ order.postcode }}</span></div>
+      </div>
+
+      <a href="{{ url_for('products_page') }}" class="btn btn-primary btn-lg" style="margin-top:32px;">Keep shopping</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

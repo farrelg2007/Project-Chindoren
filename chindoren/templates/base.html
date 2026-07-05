@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Chindoren — Stay Fluid{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='img/logo-mark-light.png') }}">
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='img/logo-mark-light.png') }}" alt="Chindoren">
+      <span>CHINDOREN</span>
+    </a>
+    <nav class="main-nav">
+      <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' }}">Home</a>
+      <a href="{{ url_for('products_page') }}" class="{{ 'active' if request.endpoint == 'products_page' }}">Shop</a>
+      <a href="{{ url_for('products_page') }}?cat=Apparel">Apparel</a>
+      <a href="{{ url_for('products_page') }}?cat=Headwear">Headwear</a>
+      <a href="{{ url_for('products_page') }}?cat=Prints">Prints</a>
+    </nav>
+    <div class="header-actions">
+      <form class="search-form" action="{{ url_for('products_page') }}" method="get">
+        <input type="text" name="q" placeholder="Search the catalog…" value="{{ request.args.get('q','') }}">
+      </form>
+      <a class="icon-btn" href="{{ url_for('cart_page') }}" aria-label="Bag">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        {% if cart_count > 0 %}<span class="cart-badge">{{ cart_count }}</span>{% endif %}
+      </a>
+    </div>
+  </div>
+</header>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="flash-stack">
+    {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+  </div>
+  {% endif %}
+{% endwith %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='img/logo-mark-light.png') }}" alt="Chindoren">
+          <span>CHINDOREN</span>
+        </a>
+        <p>Streetwear built around signal, static, and the frequencies in between. Designed and dropped in small batches.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="{{ url_for('products_page') }}?cat=Apparel">Apparel</a></li>
+          <li><a href="{{ url_for('products_page') }}?cat=Headwear">Headwear</a></li>
+          <li><a href="{{ url_for('products_page') }}?cat=Accessories">Accessories</a></li>
+          <li><a href="{{ url_for('products_page') }}?cat=Prints">Prints</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="{{ url_for('cart_page') }}">Your bag</a></li>
+          <li><a href="{{ url_for('checkout') }}">Checkout</a></li>
+          <li><a href="#">Shipping & returns</a></li>
+          <li><a href="#">Size guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Frequency</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CHINDOREN — ALL SIGNALS RESERVED</span>
+      <span>JAKARTA, ID</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

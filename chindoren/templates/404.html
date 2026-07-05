@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Signal Lost — Chindoren{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="err-wrap">
+      <div class="err-code">404</div>
+      <h1 style="font-size:26px; margin-top:10px;">This frequency isn't broadcasting.</h1>
+      <p class="muted" style="margin-top:12px;">The page you're looking for has gone off the air. Let's get you back on signal.</p>
+      <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg" style="margin-top:28px;">Back to home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
