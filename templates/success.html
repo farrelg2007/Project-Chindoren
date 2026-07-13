@@ -26,6 +26,16 @@
         <div class="row"><span>Shipping to</span><span style="text-align:right; max-width:280px;">{{ order.address }}, {{ order.city }} {{ order.postcode }}</span></div>
       </div>
 
+      {% if order.payment == 'QRIS' %}
+      <div style="margin-top:28px; display:flex; justify-content:center; align-items:center;">
+        <div style="text-align:center; padding:0; background:transparent; border:none; box-shadow:none;">
+          <h3 style="margin:0 0 8px; font-size:20px;">Scan QRIS</h3>
+          <img src="{{ url_for('static', filename='img/qr.png') }}" alt="QRIS payment" style="max-width:240px; width:100%; height:auto; display:block; margin:0 auto;">
+          <p class="muted" style="margin:10px 0 0;">Scan kode QR di atas untuk pembayaran QRIS.</p>
+        </div>
+      </div>
+      {% endif %}
+
       <a href="{{ url_for('products_page') }}" class="btn btn-primary btn-lg" style="margin-top:32px;">Keep shopping</a>
     </div>
   </div>

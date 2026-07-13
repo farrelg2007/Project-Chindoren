@@ -5,6 +5,7 @@ PRODUCTS = [
     {
         "id": 1, "sku": "CHD-HD-01", "name": "Ink Static Hoodie", "category": "Apparel",
         "price": 549000, "compare_at": 649000, "drop": 3, "icon": "hoodie",
+        "image": "img/hoodie.jpeg",
         "colors": ["Ink Black", "Bone"], "sizes": ["S", "M", "L", "XL"],
         "description": "Heavyweight 400gsm fleece with a garment-dyed finish and a dropped shoulder cut. "
                         "The static-line graphic across the back channels the brand's broadcast motif.",
@@ -34,6 +35,7 @@ PRODUCTS = [
     {
         "id": 5, "sku": "CHD-CP-05", "name": "Low-Freq Cap", "category": "Headwear",
         "price": 189000, "compare_at": None, "drop": 2, "icon": "cap",
+        "image": "img/cap.jpg",
         "colors": ["Ink Black", "Cobalt"], "sizes": ["One Size"],
         "description": "A low-profile six-panel cap with a curved brim and an embroidered dial mark.",
         "tags": ["bestseller"], "stock": 26,

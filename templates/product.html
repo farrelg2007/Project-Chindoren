@@ -13,7 +13,11 @@
 
     <div class="product-layout">
       <div class="product-media">
+        {% if product.image %}
+        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" style="width:100%; max-width:480px; height:auto; border-radius:20px; object-fit:cover;">
+        {% else %}
         {{ icon(product.icon) }}
+        {% endif %}
       </div>
 
       <div class="product-info">
@@ -78,7 +82,11 @@
         {% for p in related %}
         <a class="card" href="{{ url_for('product_detail', product_id=p.id) }}">
           <div class="card-media">
+            {% if p.image %}
+            <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.name }}" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+            {% else %}
             {{ icon(p.icon) }}
+            {% endif %}
             <div class="card-badges">
               {% if 'new' in p.tags %}<span class="badge badge-new">New</span>{% endif %}
               {% if 'bestseller' in p.tags %}<span class="badge badge-bestseller">Bestseller</span>{% endif %}

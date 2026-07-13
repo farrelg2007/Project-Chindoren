@@ -13,7 +13,13 @@
         <form method="post" action="{{ url_for('update_cart') }}">
           {% for l in lines %}
           <div class="cart-line">
-            <div class="thumb">{{ icon(l.product.icon) }}</div>
+            <div class="thumb">
+              {% if l.product.image %}
+              <img src="{{ url_for('static', filename=l.product.image) }}" alt="{{ l.product.name }}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+              {% else %}
+              {{ icon(l.product.icon) }}
+              {% endif %}
+            </div>
             <div class="meta">
               <h4>{{ l.product.name }}</h4>
               <p>{{ l.color }} · {{ l.size }} · <span class="mono">{{ l.product.sku }}</span></p>
