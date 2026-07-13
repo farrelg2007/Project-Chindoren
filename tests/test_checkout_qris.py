@@ -28,3 +28,14 @@ def test_success_page_shows_qris_when_payment_is_qris():
     assert response.status_code == 200
     assert 'qr.png' in response.get_data(as_text=True)
     assert 'Scan QRIS' in response.get_data(as_text=True)
+
+
+def test_homepage_newest_section_uses_product_image():
+    client = app.test_client()
+
+    response = client.get('/')
+    html = response.get_data(as_text=True)
+
+    assert response.status_code == 200
+    assert 'img/signal_jacket.jpeg' in html
+    assert 'Signal Jacket' in html

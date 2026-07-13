@@ -14,6 +14,7 @@ PRODUCTS = [
     {
         "id": 2, "sku": "CHD-TS-02", "name": "Frequency Tee", "category": "Apparel",
         "price": 219000, "compare_at": None, "drop": 3, "icon": "tee",
+        "image": "img/tee.jpeg",
         "colors": ["Bone", "Ink Black", "Cobalt"], "sizes": ["S", "M", "L", "XL"],
         "description": "Mid-weight 220gsm combed cotton, boxy fit, with a screen-printed frequency chart on the chest.",
         "tags": ["new"], "stock": 32,
@@ -21,6 +22,7 @@ PRODUCTS = [
     {
         "id": 3, "sku": "CHD-TS-03", "name": "Static Logo Tee", "category": "Apparel",
         "price": 199000, "compare_at": None, "drop": 2, "icon": "tee",
+        "image": "img/static_tee.jpeg",
         "colors": ["Ink Black", "Bone"], "sizes": ["S", "M", "L", "XL"],
         "description": "Our everyday tee. Clean logo hit at the chest, relaxed fit, built to be lived in.",
         "tags": [], "stock": 40,
@@ -28,6 +30,7 @@ PRODUCTS = [
     {
         "id": 4, "sku": "CHD-JK-04", "name": "Signal Jacket", "category": "Apparel",
         "price": 899000, "compare_at": None, "drop": 3, "icon": "jacket",
+        "image": "img/signal_jacket.jpeg",
         "colors": ["Ink Black"], "sizes": ["S", "M", "L", "XL"],
         "description": "A coach jacket cut from a matte nylon shell, taped seams, and a broadcast-yellow interior lining.",
         "tags": ["new", "limited"], "stock": 9,
@@ -43,6 +46,7 @@ PRODUCTS = [
     {
         "id": 6, "sku": "CHD-BN-06", "name": "Static Beanie", "category": "Headwear",
         "price": 149000, "compare_at": None, "drop": 1, "icon": "beanie",
+        "image": "img/beanie.jpeg",
         "colors": ["Ink Black", "Bone"], "sizes": ["One Size"],
         "description": "Ribbed knit beanie in a heavyweight cotton blend, finished with a woven tab.",
         "tags": [], "stock": 21,
@@ -50,6 +54,7 @@ PRODUCTS = [
     {
         "id": 7, "sku": "CHD-TB-07", "name": "Carrier Tote", "category": "Accessories",
         "price": 159000, "compare_at": None, "drop": 2, "icon": "tote",
+        "image": "img/totebag.jpeg",
         "colors": ["Bone", "Ink Black"], "sizes": ["One Size"],
         "description": "Heavy canvas tote with reinforced handles, sized for a day's carry.",
         "tags": [], "stock": 30,
@@ -57,6 +62,7 @@ PRODUCTS = [
     {
         "id": 8, "sku": "CHD-SK-08", "name": "Dial Socks (2-Pack)", "category": "Accessories",
         "price": 89000, "compare_at": None, "drop": 1, "icon": "socks",
+        "image": "img/socks.jpeg",
         "colors": ["Mixed"], "sizes": ["One Size"],
         "description": "Two pairs of crew socks knit with a dial-mark jacquard at the ankle.",
         "tags": [], "stock": 50,
@@ -64,6 +70,7 @@ PRODUCTS = [
     {
         "id": 9, "sku": "CHD-PN-09", "name": "Signal Pin Set", "category": "Accessories",
         "price": 69000, "compare_at": None, "drop": 1, "icon": "pin",
+        "image": "img/pin.jpeg",
         "colors": ["Silver", "Gold"], "sizes": ["One Size"],
         "description": "A set of three hard-enamel pins pulled from the brand's dial and static iconography.",
         "tags": ["new"], "stock": 45,
@@ -85,6 +92,7 @@ PRODUCTS = [
     {
         "id": 12, "sku": "CHD-MG-12", "name": "Static Mug", "category": "Accessories",
         "price": 119000, "compare_at": None, "drop": 1, "icon": "mug",
+        "image": "img/mug.jpeg",
         "colors": ["Bone"], "sizes": ["One Size"],
         "description": "A 350ml stoneware mug with an in-glaze static ring, dishwasher and microwave safe.",
         "tags": [], "stock": 28,
